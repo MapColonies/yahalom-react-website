@@ -34,11 +34,11 @@
 #### קליק שמאלי
 
 * בלחיצה ממושכת וגרירה של העכבר ניתן לגרור את עצמך על גבי השטח.
-  ![Edit Mode](content/user-guide/manual-images/image15.gif)
+  ![Edit Mode](./manual-images/image15.gif)
 
 
 * בלחיצה כפולה תוכל לבצע תקריב(זום אין) על הנקודה בשטח.
-  ![Edit Mode](content/user-guide/manual-images/image11.gif)
+  ![Edit Mode](./manual-images/image11.gif)
 
 
 
@@ -46,14 +46,14 @@
 #### קליק ימני
 
 * בלחיצה ממושכת וגרירה של העכבר ניתן להסתובב סביב נקודה על השטח.
-  ![Edit Mode](content/user-guide/manual-images/image7.gif)
+  ![Edit Mode](./manual-images/image7.gif)
 
 
 
 #### קליק אמצעי
 
 * בלחיצה ממושכת וגרירה של העכבר ניתן לשנות את כיוון ההסתכלות.
-  ![Edit Mode](content/user-guide/manual-images/image10.gif)
+  ![Edit Mode](./manual-images/image10.gif)
 
 
 
@@ -76,7 +76,7 @@
 * J - הסתכלות שמאלה
 
 ## פעולות מהירות
- ![Edit Mode](content/user-guide/manual-images/image22.png)
+ ![Edit Mode](./manual-images/image22.png)
 
 
 בצד ימין למטה של המסך תמצאו פעולות מהירות לשימושכם, ביניהם:
@@ -102,7 +102,7 @@
 * למקם מודלים תלת מימדיים
 * למקם פינים עם טקסט
 
-![Edit Mode](/assets/images/plan-1.jpg)
+![Edit Mode](../../../assets/images/plan-1.jpg)
 
 ### מצבי סימולציה
 באפשרותכם לבחור מצב סימולציה מהקיימים ברשימה, לאחר שתבחרו את מצב הסימולציה, על העכבר שלכם יופיע מודל תלת מימדי שיסמן את מיקום תחילת הסימולציה. בלחיצה על מקש שמאלי תוכלו למקם את המודל.
@@ -124,4 +124,4 @@
 על מנת להשתמש בהתקנים, יש צורך בשלט משחק המתחבר למחשב גם הוא.
 למידע נוסף וביצוע רכש של ההתקנים מוזמנים לפנות לתקשוב ביחידה שלכם.
 
-![Simulation Modes](/assets/images/plan-2.jpg)
+![Simulation Modes](../../../assets/images/plan-2.jpg)
