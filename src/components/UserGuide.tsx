@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Tab } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import ReactDOM from 'react-dom';
 
 interface UserGuideProps {
   isOpen: boolean;
@@ -12,38 +13,34 @@ interface UserGuideProps {
 
 interface TabContent {
   name: string;
-  file: string;
+  content: string;
 }
-
-const tabs: TabContent[] = [
-  {
-    name: 'שימוש בסיסי',
-    file: '/content/user-guide/basic-usage.md',
-  },
-  {
-    name: 'תנועה',
-    file: '/content/user-guide/movement.md',
-  },
-  {
-    name: 'מצבי התוכנה',
-    file: '/content/user-guide/software-modes.md',
-  },
-  {
-    name: 'כלים נוספים',
-    file: '/content/user-guide/additional-tools.md',
-  },
-];
 
 const UserGuide = ({ isOpen, onClose }: UserGuideProps) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [markdownContent, setMarkdownContent] = useState('');
+  const [tabs, setTabs] = useState<TabContent[]>([]);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const response = await fetch(tabs[selectedTab].file);
+        const response = await fetch('/content/user-guide/basic-usage.md');
         const content = await response.text();
         setMarkdownContent(content);
+        
+        // Parse headers and content sections
+        const sections = content.split(/(?=^## )/m).filter(Boolean);
+        const parsedTabs = sections.map(section => {
+          const lines = section.split('\n');
+          const name = lines[0].replace(/^## /, '').trim();
+          return {
+            name,
+            content: section
+          };
+        });
+        
+        setTabs(parsedTabs);
       } catch (error) {
         console.error('Error loading markdown content:', error);
         setMarkdownContent('Error loading content...');
@@ -51,7 +48,36 @@ const UserGuide = ({ isOpen, onClose }: UserGuideProps) => {
     };
 
     fetchContent();
-  }, [selectedTab]);
+  }, []);
+
+  const renderMarkdown = (content: string): Promise<string> => {
+    return new Promise((resolve) => {
+      const div = document.createElement('div');
+      div.className = 'markdown-preview';
+      
+      const reactRoot = document.createElement('div');
+      const markdownElement = (
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            img: ({ src, alt }) => (
+              <img
+                src={src}
+                alt={alt}
+                className="w-full max-w-2xl mx-auto my-4 rounded-lg shadow-lg"
+              />
+            )
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      );
+      
+      ReactDOM.render(markdownElement, reactRoot);
+      div.innerHTML = reactRoot.innerHTML;
+      resolve(div.innerHTML);
+    });
+  };
 
   if (!isOpen) return null;
 
@@ -96,21 +122,21 @@ const UserGuide = ({ isOpen, onClose }: UserGuideProps) => {
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto p-6" ref={contentRef}>
             <div className="max-w-3xl mx-auto prose dark:prose-invert prose-img:rounded-lg prose-img:shadow-lg max-w-none">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
-                  img: ({ node, ...props }) => (
+                  img: ({ src, alt }) => (
                     <img
-                      {...props}
+                      src={src}
+                      alt={alt}
                       className="w-full max-w-2xl mx-auto my-4 rounded-lg shadow-lg"
-                      loading="lazy"
                     />
-                  ),
+                  )
                 }}
               >
-                {markdownContent}
+                {tabs[selectedTab]?.content || ''}
               </ReactMarkdown>
             </div>
           </div>
