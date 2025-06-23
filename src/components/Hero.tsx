@@ -6,12 +6,72 @@ import UserGuide from './UserGuide';
 import AnimatedBackground from './AnimatedBackground';
 
 const carouselImages = [
-  { src: '/assets/images/sim-1.jpg', alt: 'סימולציית חייל' },
-  { src: '/assets/images/sim-2.jpg', alt: 'סימולציית מסוק' },
-  { src: '/assets/images/plan-1.jpg', alt: 'מדידת מרחקים' },
-  { src: '/assets/images/plan-2.jpg', alt: 'מודלים תלת מימדיים' },
-  { src: '/assets/images/adv-1.jpg', alt: 'קילוף מבנים' },
-  { src: '/assets/images/adv-2.jpg', alt: 'תצוגת לילה' },
+  { 
+    src: '/assets/images/sim-1.jpg', 
+    alt: 'סימולציית חייל',
+    userInfo: {
+      username: 'יהלום',
+      profilePic: 'assets/icons/diamond-square.png',
+      isFollowing: false
+    },
+    description: 'סימולציית אימון מתקדמת המדמה תרחישי קרב מציאותיים 🎮',
+    hashtags: ['simulation', 'training', 'military', 'VR']
+  },
+  { 
+    src: '/assets/images/sim-2.jpg', 
+    alt: 'סימולציית מסוק',
+    userInfo: {
+      username: 'יהלום',
+      profilePic: 'assets/icons/diamond-square.png',
+      isFollowing: true
+    },
+    description: 'סימולציית טיסה מתקדמת עם תצוגה פנורמית 🚁',
+    hashtags: ['helicopter', 'simulation', 'training', 'aviation']
+  },
+  { 
+    src: '/assets/images/plan-1.jpg', 
+    alt: 'מדידת מרחקים',
+    userInfo: {
+      username: 'יהלום',
+      profilePic: 'assets/icons/diamond-square.png',
+      isFollowing: false
+    },
+    description: 'כלי תכנון מתקדם למדידת מרחקים ושטחים בתלת מימד 📏',
+    hashtags: ['planning', '3D', 'measurement', 'tactical']
+  },
+  { 
+    src: '/assets/images/plan-2.jpg', 
+    alt: 'מודלים תלת מימדיים',
+    userInfo: {
+      username: 'יהלום',
+      profilePic: 'assets/icons/diamond-square.png',
+      isFollowing: true
+    },
+    description: 'מודלים תלת מימדיים מדויקים לתכנון מבצעי 🏗️',
+    hashtags: ['3Dmodeling', 'planning', 'architecture', 'operations']
+  },
+  { 
+    src: '/assets/images/adv-1.jpg', 
+    alt: 'קילוף מבנים',
+    userInfo: {
+      username: 'יהלום',
+      profilePic: 'assets/icons/diamond-square.png',
+      isFollowing: false
+    },
+    description: 'טכנולוגיית קילוף מבנים חדשנית לניתוח מבנים מורכבים 🏢',
+    hashtags: ['technology', 'buildings', 'analysis', 'innovation']
+  },
+  { 
+    src: '/assets/images/adv-2.jpg', 
+    alt: 'תצוגת לילה',
+    userInfo: {
+      username: 'יהלום',
+      profilePic: 'assets/icons/diamond-square.png',
+      isFollowing: true
+    },
+    description: 'יכולות ראיית לילה מתקדמות לפעילות מבצעית 🌙',
+    hashtags: ['nightvision', 'operations', 'tactical', 'technology']
+  },
 ];
 
 const Hero = () => {
@@ -27,10 +87,10 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-12">
+        <div className="flex flex-col-reverse lg:flex-row-reverse items-center justify-between gap-12">
           {/* Text Content */}
           <motion.div 
-            className="flex-1 text-right"
+            className="flex-1 text-right lg:pl-12"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -102,12 +162,14 @@ const Hero = () => {
 
           {/* Vertical Carousel */}
           <motion.div
-            className="flex-shrink-0"
+            className="flex-shrink-0 w-full max-w-[337.5px] h-[80vh]"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <VerticalCarousel images={carouselImages} interval={4000} />
+            <div className="rounded-2xl overflow-hidden shadow-2xl h-full">
+              <VerticalCarousel images={carouselImages} interval={4000} />
+            </div>
           </motion.div>
         </div>
       </motion.div>
