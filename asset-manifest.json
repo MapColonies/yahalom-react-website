@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/yahalom-website-react/static/css/main.33cc8a9a.css",
-    "main.js": "/yahalom-website-react/static/js/main.89e53f75.js",
-    "static/js/453.94e65606.chunk.js": "/yahalom-website-react/static/js/453.94e65606.chunk.js",
-    "index.html": "/yahalom-website-react/index.html",
-    "main.33cc8a9a.css.map": "/yahalom-website-react/static/css/main.33cc8a9a.css.map",
-    "main.89e53f75.js.map": "/yahalom-website-react/static/js/main.89e53f75.js.map",
-    "453.94e65606.chunk.js.map": "/yahalom-website-react/static/js/453.94e65606.chunk.js.map"
+    "main.css": "/yahalom-react-website/static/css/main.33cc8a9a.css",
+    "main.js": "/yahalom-react-website/static/js/main.89bac7d4.js",
+    "static/js/453.94e65606.chunk.js": "/yahalom-react-website/static/js/453.94e65606.chunk.js",
+    "index.html": "/yahalom-react-website/index.html",
+    "main.33cc8a9a.css.map": "/yahalom-react-website/static/css/main.33cc8a9a.css.map",
+    "main.89bac7d4.js.map": "/yahalom-react-website/static/js/main.89bac7d4.js.map",
+    "453.94e65606.chunk.js.map": "/yahalom-react-website/static/js/453.94e65606.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.33cc8a9a.css",
-    "static/js/main.89e53f75.js"
+    "static/js/main.89bac7d4.js"
   ]
 }
